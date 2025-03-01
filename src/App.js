@@ -1,20 +1,31 @@
-import { Route, Router, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
-import MovieCard from "./components/MovieCard";
+import MovieDetails from "./pages/MovieDetails";
 import Search from "./pages/Search";
 
+const LayOut = () => (
+   <>
+      <NavBar />
+      <Outlet />
+   </>
+);
+
+const router = createBrowserRouter([
+   {
+      path: "/",
+      element: <LayOut />,
+      children: [
+         { path: "/", element: <Home /> },
+         { path: "/movie/:id", element: <MovieDetails /> },
+         { path: "/search", element: <Search /> },
+      ],
+   },
+]);
 function App() {
    return (
       <>
-         <Router>
-            <NavBar />
-            <Routes>
-               <Route path="/" element={<Home />} />
-               <Route path="movie/:id" element={<MovieCard />} />
-               <Route path="search" element={<Search />} />
-            </Routes>
-         </Router>
+         <RouterProvider router={router} />
       </>
    );
 }
