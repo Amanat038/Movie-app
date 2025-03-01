@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
    return (
-      <div className="flex p-4 text-white transition transform bg-gray-900 rounded-lg shadow-md flax-col hover:scale-105 hover:shadow-xl">
+      <div className="flex p-4 text-white transition transform bg-gray-800 rounded-lg shadow-md flax-col hover:scale-105 hover:shadow-xl">
          <Link to={`movie/${movie.id}`} className="w-full">
             <img
             className="object-cover w-full rounded-md h-80"
